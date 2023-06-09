@@ -6,40 +6,36 @@
 #    By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 17:23:11 by jmigoya-          #+#    #+#              #
-#    Updated: 2023/05/27 16:11:34 by jmigoya-         ###   ########.fr        #
+#    Updated: 2023/06/09 16:34:25 by jmigoya-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
-
+LIBFT = include/libft
 CC = gcc
-
 CFLAGS = -Werror -Wall -Wextra 
+HEADER = ft_printf.h
 
-HEADER = printf.h
-
-SRCS = 
+FILES = ft_printf.c
 
 FILES_PATH = ./srcs/
 
-BONUSS = 
+SRCS = $(addprefix $(FILES_PATH), $(FILES))
 
 OBJS = $(SRCS:.c=.o)
-
-BONUS_OBJS = $(BONUSS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-
-bonus : $(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	@make -C $(LIBFT)
+	@ar rcs $(NAME) $(OBJS)
 
 clean :
-	rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -f $(OBJS)
+	@make clean -C $(LIBFT)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@rm -f $(LIBFT)
 
 re : fclean all
 
