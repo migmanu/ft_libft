@@ -6,35 +6,62 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/09 18:50:57 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:11:32 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static void	fsid(char c, va_list args)
+int	print_char(c)
 {
+	write(1, &c, 1);
+	return (1);
+}
+
+int	print_int(int	i)
+{
+	printf("print_int init i: %i", i);
+	ft_putnbr_fd(i, 1);
+	return (0);
+}
+
+static int	fsid(char c, va_list args)
+{
+	printf("\nfsid init specifier: %c\n", c);
+	int	char_count;
+
+	char_count = 0;
 	if (c == 'c')
-		write(1, &c, 1);
-	if (c == 's')
+		print_char(va_arg(args, int));
+	else if (c == 's')
 		ft_putstr_fd(va_arg(args, char *), 1);
-	if (c == 'p')
-		// write pointer
-	if (c == 'd')
-		// write decimal
-	if (c == 'i')
+	else if (c == 'p')
 	{
-		printf("integer");
-		ft_putnbr_fd(va_arg(args, int), 1);
+		// write pointer
 	}
-	if (c == 'u')
+	else if (c == 'd')
+	{
+		// write decimal
+	}
+	else if (c == 'i')
+	{
+		print_int(va_arg(args, int));
+	}
+	else if (c == 'u')
+	{
 		// write unsigned decimal
-	if (c == 'x')
+	}
+	else if (c == 'x')
+	{
 		// write hexadecimal lowercase
-	if (c == 'X')
+	}
+	else if (c == 'X')
+	{
 		// write hexadecimal uppercase
-	if (c == '%')
+	}
+	else if (c == '%')
 		write(1, "%", 1);
+	return (char_count);
 }
 
 int	ft_printf(const char *input, ...)
@@ -53,6 +80,7 @@ int	ft_printf(const char *input, ...)
 		if (str[i] == '%')
 		{
 			i++;
+			printf("\n match! specifier: %c\n", str[i]);
 			fsid(str[i], args);
 		}
 		else
@@ -68,11 +96,11 @@ int	ft_printf(const char *input, ...)
 
 int	main(void)
 {
-	char	*str = "hola %i";
+	char	*str = "hola %c %s %i";
 	char	*substr = "mundo";
 	char	c = '4';
 	int		i = 654654654;
 
-	ft_printf(str, i);
+	ft_printf(str, c, substr, i);
 	return (0);
 }
