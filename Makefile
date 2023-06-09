@@ -6,7 +6,7 @@
 #    By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 17:23:11 by jmigoya-          #+#    #+#              #
-#    Updated: 2023/06/09 16:34:25 by jmigoya-         ###   ########.fr        #
+#    Updated: 2023/06/09 18:26:56 by jmigoya-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
@@ -35,7 +35,7 @@ clean :
 
 fclean : clean
 	@rm -f $(NAME)
-	@rm -f $(LIBFT)
+	@rm -f $(LIBFT)/libft.a
 
 re : fclean all
 

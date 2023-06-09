@@ -6,24 +6,27 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/09 16:15:48 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:50:57 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-/*
-static void	fsid(char c, va_list args, int gf)
+
+static void	fsid(char c, va_list args)
 {
 	if (c == 'c')
 		write(1, &c, 1);
 	if (c == 's')
-		// write string
+		ft_putstr_fd(va_arg(args, char *), 1);
 	if (c == 'p')
 		// write pointer
 	if (c == 'd')
 		// write decimal
 	if (c == 'i')
-		// write integer base 10
+	{
+		printf("integer");
+		ft_putnbr_fd(va_arg(args, int), 1);
+	}
 	if (c == 'u')
 		// write unsigned decimal
 	if (c == 'x')
@@ -33,7 +36,7 @@ static void	fsid(char c, va_list args, int gf)
 	if (c == '%')
 		write(1, "%", 1);
 }
-*/
+
 int	ft_printf(const char *input, ...)
 {
 	int		i;
@@ -49,7 +52,8 @@ int	ft_printf(const char *input, ...)
 	{
 		if (str[i] == '%')
 		{
-			// check format specifier
+			i++;
+			fsid(str[i], args);
 		}
 		else
 		{
@@ -64,5 +68,11 @@ int	ft_printf(const char *input, ...)
 
 int	main(void)
 {
+	char	*str = "hola %i";
+	char	*substr = "mundo";
+	char	c = '4';
+	int		i = 654654654;
+
+	ft_printf(str, i);
 	return (0);
 }
