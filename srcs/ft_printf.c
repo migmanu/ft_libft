@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/09 19:11:32 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:57:01 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,33 @@ int	print_char(c)
 
 int	print_int(int	i)
 {
-	printf("print_int init i: %i", i);
 	ft_putnbr_fd(i, 1);
-	return (0);
+	return (digit_counter(i));
+}
+
+int	print_str(char *str)
+{
+	ft_putstr_fd(str, 1);
+	return (ft_strlen(str));
 }
 
 static int	fsid(char c, va_list args)
 {
-	printf("\nfsid init specifier: %c\n", c);
-	int	char_count;
-
-	char_count = 0;
 	if (c == 'c')
-		print_char(va_arg(args, int));
+		return (print_char(va_arg(args, int)));
 	else if (c == 's')
-		ft_putstr_fd(va_arg(args, char *), 1);
+		return (print_str(va_arg(args, char *)));
 	else if (c == 'p')
 	{
 		// write pointer
 	}
-	else if (c == 'd')
+	else if (c == 'i' || c == 'd')
 	{
-		// write decimal
-	}
-	else if (c == 'i')
-	{
-		print_int(va_arg(args, int));
+		return (print_int(va_arg(args, int)));
 	}
 	else if (c == 'u')
 	{
-		// write unsigned decimal
+		return (putuint(va_arg(args, unsigned int)));
 	}
 	else if (c == 'x')
 	{
@@ -61,12 +58,13 @@ static int	fsid(char c, va_list args)
 	}
 	else if (c == '%')
 		write(1, "%", 1);
-	return (char_count);
+	return (0);
 }
 
 int	ft_printf(const char *input, ...)
 {
 	int		i;
+	int		char_count;
 	char	*str;
 	va_list	args;
 
@@ -74,24 +72,22 @@ int	ft_printf(const char *input, ...)
 		return (0);
 	va_start(args, input);
 	str = ft_strdup(input);
+	char_count = 0;
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
-		{
-			i++;
-			printf("\n match! specifier: %c\n", str[i]);
-			fsid(str[i], args);
-		}
+			char_count += fsid(str[++i], args);
 		else
 		{
 			write(1, &str[i], 1);
+			char_count++;
 		}
 		i++;
 	}
 	va_end(args);
 	free(str);
-	return (0);
+	return (char_count);
 }
 
 int	main(void)
@@ -100,7 +96,9 @@ int	main(void)
 	char	*substr = "mundo";
 	char	c = '4';
 	int		i = 654654654;
+	unsigned int	u = 6546546543
 
-	ft_printf(str, c, substr, i);
+	int r = ft_printf(str, c, substr, i);
+	printf("\n\nresult = %d", r);
 	return (0);
 }

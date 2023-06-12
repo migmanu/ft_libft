@@ -6,7 +6,7 @@
 #    By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 17:23:11 by jmigoya-          #+#    #+#              #
-#    Updated: 2023/06/09 18:26:56 by jmigoya-         ###   ########.fr        #
+#    Updated: 2023/06/12 15:54:14 by jmigoya-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Werror -Wall -Wextra 
 HEADER = ft_printf.h
 
-FILES = ft_printf.c
+FILES = ft_printf.c printfutils.c
 
 FILES_PATH = ./srcs/
 

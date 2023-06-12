@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:19:12 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/05/27 15:14:46 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:38:15 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,9 @@
 
 # include "libft/libft.h"
 # include <stdarg.h>
+
+
+int	digit_counter(unsigned int n);
+int	putuint(unsigned int n);
 
 #endif
