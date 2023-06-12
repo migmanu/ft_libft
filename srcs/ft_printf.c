@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/12 16:57:01 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:59:29 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ int	ft_printf(const char *input, ...)
 
 int	main(void)
 {
-	char	*str = "hola %c %s %i";
+	char	*str = "hola %c %s %i %u";
 	char	*substr = "mundo";
 	char	c = '4';
 	int		i = 654654654;
-	unsigned int	u = 6546546543
+	unsigned int	u = 4294967295;
 
-	int r = ft_printf(str, c, substr, i);
+	int r = ft_printf(str, c, substr, i, u);
 	printf("\n\nresult = %d", r);
 	return (0);
 }
