@@ -6,13 +6,13 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/12 16:59:29 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:50:07 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	print_char(c)
+int	print_char(char c)
 {
 	write(1, &c, 1);
 	return (1);
