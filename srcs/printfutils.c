@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:35:55 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/12 16:34:44 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/20 20:54:15 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	digit_counter(unsigned int n)
 	}
 	return (r);
 }
+
 int	putuint(unsigned int n)
 {
 	if (n > 9)

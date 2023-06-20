@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:56:01 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/20 17:46:04 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/20 20:54:48 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	hex_len(unsigned int n)
 	return (len);
 }
 
-static void write_hex(unsigned int n, char fs)
+static void	write_hex(unsigned int n, char fs)
 {
 	if (n > 15)
 	{
@@ -47,6 +47,7 @@ static void write_hex(unsigned int n, char fs)
 		}
 	}
 }
+
 int	print_hex(unsigned int n, char fs)
 {
 	int	len;
@@ -54,7 +55,7 @@ int	print_hex(unsigned int n, char fs)
 	len = 0;
 	if (n == 0)
 		return (write(1, "0", 1));
-	write_hex(n, fs);	
+	write_hex(n, fs);
 	return (hex_len(n));
 }
 /*

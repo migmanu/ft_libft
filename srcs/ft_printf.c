@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/20 17:34:58 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/20 20:55:54 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	print_char(char c)
 	return (1);
 }
 
-int	print_int(int	i)
+int	print_int(int i)
 {
 	ft_putnbr_fd(i, 1);
 	return (digit_counter(i));
@@ -37,27 +37,17 @@ static int	fsid(char c, va_list args)
 	else if (c == 's')
 		return (print_str(va_arg(args, char *)));
 	else if (c == 'p')
-	{
-		// write pointer
-	}
+		return (print_ptr(va_arg(args, void *)));
 	else if (c == 'i' || c == 'd')
-	{
 		return (print_int(va_arg(args, int)));
-	}
 	else if (c == 'u')
-	{
 		return (putuint(va_arg(args, unsigned int)));
-	}
 	else if (c == 'x')
-	{
 		return (print_hex(va_arg(args, unsigned int), 'x'));
-	}
 	else if (c == 'X')
-	{
 		return (print_hex(va_arg(args, unsigned int), 'X'));
-	}
 	else if (c == '%')
-		write(1, "%", 1);
+		return (write(1, "%", 1));
 	return (0);
 }
 
@@ -89,21 +79,22 @@ int	ft_printf(const char *input, ...)
 	free(str);
 	return (char_count);
 }
-
+/*
 int	main(void)
 {
-	char	*str = "hola %c %s %i %u %x %X";
+	char	*str = "hola %% %c %s %i %u %x %X %p";
 	char	*substr = "mundo";
 	char	c = '4';
 	int		i = 654654654;
 	unsigned int	u = 4294967295;
 	int x = -11;
 	int X = -12;
+	char	p;
 
-	int r = ft_printf(str, c, substr, i, u, x, X);
+	int r = ft_printf(str, c, substr, i, u, x, X, p);
 	printf("\n\n");
-	int r2 = printf(str, c, substr, i, u, x, X);
+	int r2 = printf(str, c, substr, i, u, x, X, p);
 	printf("\n\n");
 	printf("r:%d r2:%d", r, r2);
 	return (0);
-}
+}*/
