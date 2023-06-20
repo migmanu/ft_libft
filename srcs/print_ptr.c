@@ -6,11 +6,16 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:50:23 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/19 17:55:47 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:01:19 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	print_ptr(void *ptr)
 {
 	
+}
+
+int	main(void)
+{
+	return (0);
 }

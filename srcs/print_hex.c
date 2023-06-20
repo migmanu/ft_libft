@@ -6,34 +6,64 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:56:01 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/19 19:02:07 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:46:04 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	print_hex_low(long n)
+static int	hex_len(unsigned int n)
 {
-	int	l;
+	int	len;
 
-	l = 0;
-	if (n < 0)
+	len = 0;
+	while (n > 0)
 	{
-
+		len++;
+		n = n / 16;
 	}
-	if (n > 9)
-	{
+	return (len);
+}
 
+static void write_hex(unsigned int n, char fs)
+{
+	if (n > 15)
+	{
+		write_hex(n / 16, fs);
+		write_hex(n % 16, fs);
 	}
 	else
 	{
-
+		if (n < 10)
+			ft_putchar_fd((n + '0'), 1);
+		else
+		{
+			n = n - 10;
+			if (fs == 'x')
+				ft_putchar_fd(n + 'a', 1);
+			if (fs == 'X')
+				ft_putchar_fd(n + 'A', 1);
+			write(1, &n, 1);
+		}
 	}
-	return (l);
 }
+int	print_hex(unsigned int n, char fs)
+{
+	int	len;
 
+	len = 0;
+	if (n == 0)
+		return (write(1, "0", 1));
+	write_hex(n, fs);	
+	return (hex_len(n));
+}
+/*
 int	main(void)
 {
-	long int	a = 2147483648;
-	printf("%x", a);
-}
+	unsigned int	a = 98798765;
+	int r = print_hex(a, 'x');
+	printf("\n\n");
+	int r2 = printf("%x", a);
+	printf("\n\n");
+	printf("r: %d r2:%d", r, r2);
+}*/

@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:19:12 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/12 16:38:15 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:05:43 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 
 int	digit_counter(unsigned int n);
 int	putuint(unsigned int n);
+int	print_hex(unsigned int n, char fs);
 
 #endif

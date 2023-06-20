@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/19 17:50:07 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:34:58 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ static int	fsid(char c, va_list args)
 	}
 	else if (c == 'x')
 	{
-		// write hexadecimal lowercase
+		return (print_hex(va_arg(args, unsigned int), 'x'));
 	}
 	else if (c == 'X')
 	{
-		// write hexadecimal uppercase
+		return (print_hex(va_arg(args, unsigned int), 'X'));
 	}
 	else if (c == '%')
 		write(1, "%", 1);
@@ -92,13 +92,18 @@ int	ft_printf(const char *input, ...)
 
 int	main(void)
 {
-	char	*str = "hola %c %s %i %u";
+	char	*str = "hola %c %s %i %u %x %X";
 	char	*substr = "mundo";
 	char	c = '4';
 	int		i = 654654654;
 	unsigned int	u = 4294967295;
+	int x = -11;
+	int X = -12;
 
-	int r = ft_printf(str, c, substr, i, u);
-	printf("\n\nresult = %d", r);
+	int r = ft_printf(str, c, substr, i, u, x, X);
+	printf("\n\n");
+	int r2 = printf(str, c, substr, i, u, x, X);
+	printf("\n\n");
+	printf("r:%d r2:%d", r, r2);
 	return (0);
 }
