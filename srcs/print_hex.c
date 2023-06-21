@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:56:01 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/20 20:54:48 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:09:24 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ static void	write_hex(unsigned int n, char fs)
 
 int	print_hex(unsigned int n, char fs)
 {
-	int	len;
-
-	len = 0;
 	if (n == 0)
 		return (write(1, "0", 1));
 	write_hex(n, fs);

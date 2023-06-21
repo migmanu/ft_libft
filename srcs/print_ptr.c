@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:50:23 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/20 20:53:36 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:11:21 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	print_ptr(unsigned long *ptr)
 
 	add = (unsigned long long)ptr;
 	len = 0;
-	if (ptr == 0)
-		return (write(1, "0x0", 3));
+	if (ptr == NULL)
+		return (write(1, "(nil)", 5));
 	len += write(1, "0x", 2);
 	write_ptr_hex(add);
 	return (len + hex_len(add));

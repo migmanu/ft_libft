@@ -6,16 +6,16 @@
 #    By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 17:23:11 by jmigoya-          #+#    #+#              #
-#    Updated: 2023/06/12 15:54:14 by jmigoya-         ###   ########.fr        #
+#    Updated: 2023/06/21 16:57:42 by jmigoya-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
-LIBFT = include/libft
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra 
-HEADER = ft_printf.h
+HEADER = ./include/ft_printf.h
+LIBFT = ./include/libft
 
-FILES = ft_printf.c printfutils.c
+FILES = ft_printf.c printfutils.c print_hex.c print_ptr.c
 
 FILES_PATH = ./srcs/
 
@@ -26,16 +26,18 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make -C $(LIBFT)
-	@ar rcs $(NAME) $(OBJS)
+	make -C $(LIBFT)
+	cp include/libft/libft.a .
+	mv libft.a $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
 clean :
-	@rm -f $(OBJS)
-	@make clean -C $(LIBFT)
+	rm -f $(OBJS)
+	make clean -C $(LIBFT)
 
 fclean : clean
-	@rm -f $(NAME)
-	@rm -f $(LIBFT)/libft.a
+	rm -f $(NAME)
+	make fclean -C $(LIBFT)
 
 re : fclean all
 

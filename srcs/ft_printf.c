@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/20 20:55:54 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:46:07 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	print_char(char c)
 	return (1);
 }
 
-int	print_int(int i)
+int	print_int(long int i)
 {
 	ft_putnbr_fd(i, 1);
 	return (digit_counter(i));
@@ -26,6 +26,8 @@ int	print_int(int i)
 
 int	print_str(char *str)
 {
+	if (str == NULL)
+		return (write(1, "(null)", 6));
 	ft_putstr_fd(str, 1);
 	return (ft_strlen(str));
 }
@@ -91,9 +93,11 @@ int	main(void)
 	int X = -12;
 	char	p;
 
-	int r = ft_printf(str, c, substr, i, u, x, X, p);
+	//int r = ft_printf(str, c, substr, i, u, x, X, p);
+	int r = ft_printf(" %x ", -10);
 	printf("\n\n");
-	int r2 = printf(str, c, substr, i, u, x, X, p);
+	//int r2 = printf(str, c, substr, i, u, x, X, p);
+	int r2 = printf(" %x ", -10);
 	printf("\n\n");
 	printf("r:%d r2:%d", r, r2);
 	return (0);

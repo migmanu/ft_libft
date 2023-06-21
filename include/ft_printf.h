@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:19:12 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/20 20:57:39 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:23:54 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-int	digit_counter(unsigned int n);
+int	digit_counter(long int n);
 int	putuint(unsigned int n);
 int	print_hex(unsigned int n, char fs);
 int	print_ptr(unsigned long *ptr);
+int	ft_printf(const char *input, ...);
 
 #endif

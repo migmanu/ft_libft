@@ -6,19 +6,24 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:35:55 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/20 20:54:15 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:22:48 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	digit_counter(unsigned int n)
+int	digit_counter(long int n)
 {
 	int	r;
 
 	r = 0;
+	if (n < 0)
+	{
+		r++;
+		n = n * -1;
+	}
 	if (n < 10)
-		return (1);
+		return (++r);
 	while (n > 0)
 	{
 		r++;
