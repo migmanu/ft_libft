@@ -193,7 +193,7 @@ int main(void)
 
 	test_percent();
 
-	//test_NULL();
+	test_NULL();
 
 	test_MIX();
 

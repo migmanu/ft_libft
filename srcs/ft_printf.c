@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/21 20:46:07 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:54:21 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static int	fsid(char c, va_list args)
 		return (print_hex(va_arg(args, unsigned int), 'X'));
 	else if (c == '%')
 		return (write(1, "%", 1));
+	else if (c == '@')
+		return (write(1, "%@", 2));
 	return (0);
 }
 
@@ -61,21 +63,21 @@ int	ft_printf(const char *input, ...)
 	va_list	args;
 
 	if (!input)
-		return (0);
+		return (-1);
 	va_start(args, input);
 	str = ft_strdup(input);
 	char_count = 0;
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '%')
-			char_count += fsid(str[++i], args);
-		else
-		{
+		if (str[i] == '%' && (str[i + 1] != '\0' || str[i - 1] == '%'))
+			char_count += fsid(str[++i], args) - 1;
+		else if (str[i] != '%')
 			write(1, &str[i], 1);
-			char_count++;
-		}
+		else if (str[i] == '%' && str[i - 1] != '%' && str[i + 1] == '\0')
+			char_count = -2;
 		i++;
+		char_count++;
 	}
 	va_end(args);
 	free(str);
