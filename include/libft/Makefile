@@ -6,7 +6,7 @@
 #    By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/06 17:23:11 by jmigoya-          #+#    #+#              #
-#    Updated: 2023/05/22 18:53:55 by jmigoya-         ###   ########.fr        #
+#    Updated: 2024/05/26 00:50:53 by jmigoya-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -30,23 +30,28 @@ BONUSS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
 			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c\
 			ft_lstiter.c ft_lstmap.c
 
-OBJS = $(SRCS:.c=.o)
+OBJ_DIR = ./obj/
+OBJ_FILES = $(patsubst $(SRCS_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 BONUS_OBJS = $(BONUSS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS_FILES)
+	@ar rcs $(NAME) $(OBJS_FILES)
+
+$(OBJ_DIR)%.o: $(SRCS)%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus : $(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 clean :
-	rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 
