@@ -6,7 +6,7 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 14:20:06 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/05/23 17:22:17 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2024/05/26 20:55:30 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ int	main(void)
 	char		dst2[] = "123";
 
 	printf("original:\n dst: %s\n return: %zu\n", dst, strlcat(dst, src, size));
-	printf("copy:\n dst: %s\n return: %zu\n", dst2, ft_strlcat(dst2, src2, size));
+	printf("copy:\n dst: %s\n return: %zu\n", dst2,
+	ft_strlcat(dst2, src2, size));
 	
-	//printf("size: %zu\nr: %zu\ndst: %s", size, ft_strlcat(dst, src, size), dst);
+	//printf("size: %zu\nr: %zu\ndst: %s", size,
+	//ft_strlcat(dst, src, size), dst);
 	return (0);
 }
 */

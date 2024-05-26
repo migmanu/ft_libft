@@ -6,13 +6,13 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 13:59:37 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:35:48 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2024/05/26 20:55:01 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new_node)
 {
 	t_list	*curr;
 
@@ -23,10 +23,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 			curr = *lst;
 			while (curr->next != NULL)
 				curr = curr->next;
-			curr->next = new;
+			curr->next = new_node;
 		}
 		else
-			*lst = new;
+			*lst = new_node;
 	}
 }
 /*
