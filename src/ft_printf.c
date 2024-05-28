@@ -6,33 +6,13 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 13:04:00 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/07/12 17:54:21 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2024/05/26 21:11:46 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	print_char(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	print_int(long int i)
-{
-	ft_putnbr_fd(i, 1);
-	return (digit_counter(i));
-}
-
-int	print_str(char *str)
-{
-	if (str == NULL)
-		return (write(1, "(null)", 6));
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
-}
-
-static int	fsid(char c, va_list args)
+static int	fmt_str_id(char c, va_list args)
 {
 	if (c == 'c')
 		return (print_char(va_arg(args, int)));
@@ -71,7 +51,7 @@ int	ft_printf(const char *input, ...)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%' && (str[i + 1] != '\0' || str[i - 1] == '%'))
-			char_count += fsid(str[++i], args) - 1;
+			char_count += fmt_str_id(str[++i], args) - 1;
 		else if (str[i] != '%')
 			write(1, &str[i], 1);
 		else if (str[i] == '%' && str[i - 1] != '%' && str[i + 1] == '\0')

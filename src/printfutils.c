@@ -6,11 +6,31 @@
 /*   By: jmigoya- <jmigoya-@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:35:55 by jmigoya-          #+#    #+#             */
-/*   Updated: 2023/06/21 20:22:48 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2024/05/26 21:11:12 by jmigoya-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+int	print_char(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	print_int(long int i)
+{
+	ft_putnbr_fd(i, 1);
+	return (digit_counter(i));
+}
+
+int	print_str(char *str)
+{
+	if (str == NULL)
+		return (write(1, "(null)", 6));
+	ft_putstr_fd(str, 1);
+	return (ft_strlen(str));
+}
 
 int	digit_counter(long int n)
 {
